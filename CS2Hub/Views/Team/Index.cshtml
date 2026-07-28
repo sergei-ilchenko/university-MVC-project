@@ -1,0 +1,30 @@
+﻿@using Core
+@using Core.Editors
+@using Domain
+@using Facade
+@model IEnumerable<Facade.TeamView>
+
+@{
+	ViewData["Type"] = "Team";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(TeamView.Name),
+		nameof(TeamView.PlayersCount),
+		nameof(TeamView.Value),
+		nameof(TeamView.RatingUpdatedAt)
+	};
+	async Task<IEnumerable<PlayerView>> relatedPlayers()
+	{
+		var id = ViewBag.SelectedId;
+		var team = await Services.GetItem<ITeamsRepo, Team>(id) as Team;
+		if (team != null) await team.LoadLazy();
+		var players = team?.Players?.Where(x => x is not null);
+		return players?.Select(x => new PlayerViewFactory().CreateView(x!.data)) ?? [];
+	}
+}
+
+@Html.ShowTable(Model, true, propsToShow)
+
+@if (ViewBag.SelectedId != null) {
+	@await Html.PartialAsync("_RelatedPlayers", await relatedPlayers())
+}

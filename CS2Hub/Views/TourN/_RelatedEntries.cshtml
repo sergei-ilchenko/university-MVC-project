@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TeamView>
+@using Facade
+@using Core.Editors
+
+@{
+	var propsToShow = new[] {
+		nameof(TeamView.Name),
+		nameof(TeamView.Value)
+	};
+}
+<h3>Tournament Entries</h3>
+
+@Html.RelatedTable(Model, propsToShow)

@@ -1,0 +1,10 @@
+﻿@model Facade.TeamView
+
+@{
+	ViewData["Type"] = "Team";
+	Layout = "~/Views/Shared/_DetailsLayout.cshtml";
+}
+
+@{
+	await Html.RenderPartialAsync("_TeamView", Model);
+}

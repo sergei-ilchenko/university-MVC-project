@@ -1,0 +1,8 @@
+﻿@model Facade.PlayerView
+
+@{
+	ViewData["Type"] = "Player";
+	Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+@{await Html.RenderPartialAsync("_PlayerEdit", Model);}

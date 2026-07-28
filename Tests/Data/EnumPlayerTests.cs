@@ -1,0 +1,78 @@
+﻿using Data;
+
+namespace Tests.Data;
+
+[TestClass] public class NationalityTests() : EnumTests<Nationality>(70)
+{
+
+    [TestMethod] public void ArmeniaTest() => IsEnum(0);
+    [TestMethod] public void ArgentinaTest() => IsEnum(1);
+    [TestMethod] public void AustriaTest() => IsEnum(2);
+    [TestMethod] public void AustraliaTest() => IsEnum(3);
+    [TestMethod] public void AzerbaijanTest() => IsEnum(4);
+    [TestMethod] public void BosniaHerzegovinaTest() => IsEnum(5);
+    [TestMethod] public void BelgiumTest() => IsEnum(6);
+    [TestMethod] public void BulgariaTest() => IsEnum(7);
+    [TestMethod] public void BrazilTest() => IsEnum(8);
+    [TestMethod] public void BelarusTest() => IsEnum(9);
+    [TestMethod] public void CanadaTest() => IsEnum(10);
+    [TestMethod] public void SwitzerlandTest() => IsEnum(11);
+    [TestMethod] public void ChileTest() => IsEnum(12);
+    [TestMethod] public void ChinaTest() => IsEnum(13);
+    [TestMethod] public void ColombiaTest() => IsEnum(14);
+    [TestMethod] public void CubaTest() => IsEnum(15);
+    [TestMethod] public void CyprusTest() => IsEnum(16);
+    [TestMethod] public void CzechiaTest() => IsEnum(17);
+    [TestMethod] public void GermanyTest() => IsEnum(18);
+    [TestMethod] public void DenmarkTest() => IsEnum(19);
+    [TestMethod] public void EstoniaTest() => IsEnum(20);
+    [TestMethod] public void EgyptTest() => IsEnum(21);
+    [TestMethod] public void SpainTest() => IsEnum(22);
+    [TestMethod] public void FinlandTest() => IsEnum(23);
+    [TestMethod] public void FranceTest() => IsEnum(24);
+    [TestMethod] public void GreatBritainTest() => IsEnum(25);
+    [TestMethod] public void GeorgiaTest() => IsEnum(26);
+    [TestMethod] public void GreeceTest() => IsEnum(27);
+    [TestMethod] public void HondurasTest() => IsEnum(28);
+    [TestMethod] public void CroatiaTest() => IsEnum(29);
+    [TestMethod] public void HungaryTest() => IsEnum(30);
+    [TestMethod] public void IndonesiaTest() => IsEnum(31);
+    [TestMethod] public void IrelandTest() => IsEnum(32);
+    [TestMethod] public void IsraelTest() => IsEnum(33);
+    [TestMethod] public void IndiaTest() => IsEnum(34);
+    [TestMethod] public void IcelandTest() => IsEnum(35);
+    [TestMethod] public void ItalyTest() => IsEnum(36);
+    [TestMethod] public void JamaicaTest() => IsEnum(37);
+    [TestMethod] public void JapanTest() => IsEnum(38);
+    [TestMethod] public void KoreaTest() => IsEnum(39);
+    [TestMethod] public void KazakhstanTest() => IsEnum(40);
+    [TestMethod] public void LithuaniaTest() => IsEnum(41);
+    [TestMethod] public void LuxembourgTest() => IsEnum(42);
+    [TestMethod] public void LatviaTest() => IsEnum(43);
+    [TestMethod] public void MoldovaTest() => IsEnum(44);
+    [TestMethod] public void MongoliaTest() => IsEnum(45);
+    [TestMethod] public void MaltaTest() => IsEnum(46);
+    [TestMethod] public void MexicoTest() => IsEnum(47);
+    [TestMethod] public void NigeriaTest() => IsEnum(48);
+    [TestMethod] public void NetherlandsTest() => IsEnum(49);
+    [TestMethod] public void NorwayTest() => IsEnum(50);
+    [TestMethod] public void NewZealandTest() => IsEnum(51);
+    [TestMethod] public void PanamaTest() => IsEnum(52);
+    [TestMethod] public void PeruTest() => IsEnum(53);
+    [TestMethod] public void PhilippinesTest() => IsEnum(54);
+    [TestMethod] public void PortugalTest() => IsEnum(55);
+    [TestMethod] public void PolandTest() => IsEnum(56);
+    [TestMethod] public void RomaniaTest() => IsEnum(57);
+    [TestMethod] public void SerbiaTest() => IsEnum(58);
+    [TestMethod] public void RussiaTest() => IsEnum(59);
+    [TestMethod] public void SaudiArabiaTest() => IsEnum(60);
+    [TestMethod] public void SwedenTest() => IsEnum(61);
+    [TestMethod] public void SloveniaTest() => IsEnum(62);
+    [TestMethod] public void SlovakiaTest() => IsEnum(63);
+    [TestMethod] public void TürkiyeTest() => IsEnum(64);
+    [TestMethod] public void UkraineTest() => IsEnum(65);
+    [TestMethod] public void UsaTest() => IsEnum(66);
+    [TestMethod] public void VenezuelaTest() => IsEnum(67);
+    [TestMethod] public void SouthAfricaTest() => IsEnum(68);
+    [TestMethod] public void UnspecifiedTest() => IsEnum(69);
+}

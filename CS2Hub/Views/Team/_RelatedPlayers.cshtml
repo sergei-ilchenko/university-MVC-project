@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PlayerView>
+@using Facade
+@using Core.Editors
+
+@{
+	var propsToShow = new[] {
+		nameof(PlayerView.Nick),
+		nameof(PlayerView.Name),
+		nameof(PlayerView.Nationality),
+		nameof(PlayerView.Age)
+	};
+}
+<h3>Team Players</h3>
+
+@Html.RelatedTable(Model, propsToShow)

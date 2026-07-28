@@ -1,0 +1,39 @@
+﻿@using Core
+@using Core.Editors
+@using Domain
+@using Facade
+@model IEnumerable<Facade.MatchView>
+
+@{
+	ViewData["Type"] = "Match";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(MatchView.Title),
+		nameof(MatchView.StartDate),
+		nameof(MatchView.Sponsor),
+		nameof(MatchView.nrParticipants),
+		nameof(MatchView.Winner),
+		nameof(MatchView.Status)
+	};
+	async Task<IEnumerable<TeamView>> relatedEntries() {
+		var id = ViewBag.SelectedId;
+		var match = await Services.Get<IMatchRepo>()?.Get(id) as Match;
+		if (match != null) await match.LoadLazy();
+		var entries = match?.Teams?.Where(x => x is not null);
+		var factory = new TeamViewFactory();
+		var result = new List<TeamView>();
+		if (entries != null) {
+			foreach (var x in entries) {
+				await x!.LoadLazy();
+				result.Add(factory.Create(x));
+			}
+		}
+		return result;
+	}
+}
+
+@Html.ShowTable(Model, true, propsToShow)
+
+@if (ViewBag.SelectedId != null) {
+	@await Html.PartialAsync("_RelatedEntries", await relatedEntries())
+}

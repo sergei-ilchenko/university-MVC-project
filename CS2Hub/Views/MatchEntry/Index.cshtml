@@ -1,0 +1,14 @@
+﻿@using Core.Editors
+@using Facade
+@model IEnumerable<Facade.MatchEntryView>
+
+@{
+	ViewData["Type"] = "Match Entries";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(MatchEntryView.MatchId),
+		nameof(MatchEntryView.TeamId),
+	};
+}
+
+@Html.ShowTable(Model, propsToShow)

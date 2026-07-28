@@ -1,0 +1,14 @@
+﻿@using Core.Editors
+@using Facade
+@model IEnumerable<Facade.TournEntryView>
+
+@{
+	ViewData["Type"] = "Tournament Entries";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(TournEntryView.TourNId),
+		nameof(TournEntryView.TeamId),
+	};
+}
+
+@Html.ShowTable(Model, propsToShow)

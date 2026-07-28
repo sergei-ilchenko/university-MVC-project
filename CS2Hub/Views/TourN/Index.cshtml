@@ -1,0 +1,40 @@
+﻿@using Core
+@using Core.Editors
+@using Domain
+@using Facade
+@model IEnumerable<Facade.TourNView>
+
+@{
+	ViewData["Type"] = "Tournament";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(TourNView.Title),
+		nameof(TourNView.StartDate),
+		nameof(TourNView.PrizePool),
+		nameof(TourNView.Sponsor),
+		nameof(TourNView.nrParticipants),
+		nameof(TourNView.Winner),
+		nameof(TourNView.Status)
+	};
+	async Task<IEnumerable<TeamView>> relatedEntries() {
+		var id = ViewBag.SelectedId;
+		var tourn = await Services.Get<ITourNRepo>()?.Get(id) as TourN;
+		if (tourn != null) await tourn.LoadLazy();
+		var entries = tourn?.Teams?.Where(x => x is not null);
+		var factory = new TeamViewFactory();
+		var result = new List<TeamView>();
+		if (entries != null) {
+			foreach (var x in entries) {
+				await x!.LoadLazy();
+				result.Add(factory.Create(x));
+			}
+		}
+		return result;
+	}
+}
+
+@Html.ShowTable(Model, true, propsToShow)
+
+@if (ViewBag.SelectedId != null) {
+	@await Html.PartialAsync("_RelatedEntries", await relatedEntries())
+}

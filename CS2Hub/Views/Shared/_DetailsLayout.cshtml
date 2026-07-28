@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Facade.EntityView
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Details</h1>
+<h4>@ViewData["Type"]</h4>
+
+<div>
+	<hr />
+	<dl class="row">
+		@RenderBody()
+	</dl>
+</div>
+<div>
+	<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+	<a asp-action="Index">Back to List</a>
+</div>

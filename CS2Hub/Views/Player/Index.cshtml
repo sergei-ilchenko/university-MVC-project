@@ -1,0 +1,16 @@
+﻿@using Core.Editors
+@using Facade
+@model IEnumerable<Facade.PlayerView>
+
+@{
+	ViewData["Type"] = "Player";
+	Layout = "~/Views/Shared/_IndexLayout.cshtml";
+	var propsToShow = new[] {
+		nameof(PlayerView.Nick),
+		nameof(PlayerView.Name),
+		nameof(PlayerView.Nationality),
+		nameof(PlayerView.Age)
+	};
+}
+
+@Html.ShowTable(Model, propsToShow)

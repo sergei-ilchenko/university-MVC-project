@@ -1,0 +1,18 @@
+@using Core
+@using Core.Editors
+@using Domain
+@model Facade.MatchEntryView
+
+@{
+	var selectMatches = await Services.SelectList<IMatchRepo, Match>(
+		m => m.Title, Model.MatchId);
+
+	var selectTeams = await Services.SelectList<ITeamsRepo, Team>(
+		m => m.Name, Model.TeamId);
+}
+
+@Html.SelectFor(x => x.MatchId, selectMatches)
+@Html.SelectFor(x => x.TeamId, selectTeams)
+
+
+

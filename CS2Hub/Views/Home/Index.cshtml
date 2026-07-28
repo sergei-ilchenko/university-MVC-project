@@ -1,0 +1,42 @@
+﻿@{  
+  ViewData["Title"] = "Welcome to CS2Hub";  
+  Layout = "~/Views/Shared/_Layout.cshtml";  
+}  
+
+<div style="display: flex; gap: 1rem; justify-content: center; align-items: center;"> 
+	<div class="row">
+		<div class="col-sm-12 col-lg-4">
+			<div class="icon_1">
+				<a asp-area="" asp-controller="TourN" asp-action="Index">
+					<img src="@Url.Content("~/images/tr4.jpg")">
+				</a>
+			</div>
+			<h1 class="website_text">Tournaments</h1>
+			<p class="dolor_text">
+				Text...........................
+			</p>
+		</div>
+		<div class="col-sm-12 col-lg-4">
+			<div class="icon_1">
+				<a asp-area="" asp-controller="Team" asp-action="Index">
+					<img src="@Url.Content("~/images/team.jpg")">
+				</a>
+			</div>
+			<h1 class="website_text">Teams</h1>
+			<p class="dolor_text">
+				Text...........................
+			</p>
+		</div>
+		<div class="col-sm-12 col-lg-4">
+			<div class="icon_1">
+				<a asp-area="" asp-controller="Player" asp-action="Index">
+					<img src="@Url.Content("~/images/player.jpg")">
+				</a>
+			</div>
+			<h1 class="website_text">Players</h1>
+			<p class="dolor_text">
+				Text...........................
+			</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+@using Core.Editors
+@model Facade.MatchView
+
+@Html.InputFor(model => model.Title)
+@Html.InputFor(model => model.StartDate)
+@Html.InputFor(model => model.Sponsor)
+@Html.InputFor(model => model.nrParticipants)
+@Html.InputFor(model => model.Winner)
+@Html.InputForEnum(model => model.Status)
+
+
+
+

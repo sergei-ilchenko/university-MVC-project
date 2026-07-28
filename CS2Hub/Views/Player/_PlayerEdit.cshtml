@@ -1,0 +1,19 @@
+@using Core
+@using Core.Editors
+@using Domain
+@model Facade.PlayerView
+
+@{
+	var selectTeams = await Services.SelectList<ITeamsRepo, Team>(
+		m => m.Name, Model.TeamId);
+}
+
+@Html.InputFor(model => model.Nick)
+@Html.InputFor(model => model.Name)
+@Html.InputForEnum(model => model.Nationality)
+@Html.InputFor(model => model.Born)
+@Html.SelectFor(model => model.TeamId, selectTeams)
+
+
+
+

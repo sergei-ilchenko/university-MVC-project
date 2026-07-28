@@ -1,0 +1,32 @@
+﻿@using Core.Editors
+@using Data
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Facade.TourNView
+
+@{
+	bool isPast = Model.Status == Status.Past;
+	var teams = ViewBag.Teams as List<Domain.Team>;
+}
+@Html.InputFor(model => model.Title)
+@Html.InputFor(model => model.StartDate)
+@Html.InputFor(model => model.PrizePool)
+@Html.InputFor(model => model.Sponsor)
+@Html.InputFor(model => model.nrParticipants)
+@Html.InputForEnum(model => model.Status)
+@if (isPast && teams != null && teams.Count > 0)
+{
+	<div class="form-group">
+		<label for="Winner">Winner</label>
+		@Html.DropDownListFor(
+			model => model.Winner,
+			new SelectList(teams, "Name", "Name", Model.Winner),
+			"Choose winner",
+			new { @class = "form-control" }
+		)
+	</div>
+}
+else
+{
+	@Html.TextBoxFor(model => model.Winner, new { @class = "form-control", disabled = "disabled" })
+}
+

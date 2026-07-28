@@ -1,0 +1,8 @@
+﻿@model Facade.MatchView
+
+@{
+	ViewData["Type"] = "Match";
+	Layout = "~/Views/Shared/_DeleteLayout.cshtml";
+}
+
+@{await Html.RenderPartialAsync("_MatchView", Model);}

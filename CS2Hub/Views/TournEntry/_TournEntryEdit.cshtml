@@ -1,0 +1,18 @@
+@using Core
+@using Core.Editors
+@using Domain
+@model Facade.TournEntryView
+
+@{
+	var selectTourns = await Services.SelectList<ITourNRepo, TourN>(
+		m => m.Title, Model.TourNId);
+
+	var selectTeams = await Services.SelectList<ITeamsRepo, Team>(
+		m => m.Name, Model.TeamId);
+}
+
+@Html.SelectFor(x => x.TourNId, selectTourns)
+@Html.SelectFor(x => x.TeamId, selectTeams)
+
+
+

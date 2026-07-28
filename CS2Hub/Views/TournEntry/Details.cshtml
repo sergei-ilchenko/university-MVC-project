@@ -1,0 +1,10 @@
+﻿@model Facade.TournEntryView
+
+@{
+	ViewData["Type"] = "Tournament Entries";
+	Layout = "~/Views/Shared/_DetailsLayout.cshtml";
+}
+
+@{
+	await Html.RenderPartialAsync("_TournEntryView", Model);
+}

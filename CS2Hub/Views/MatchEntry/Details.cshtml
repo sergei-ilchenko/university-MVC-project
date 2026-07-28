@@ -1,0 +1,10 @@
+﻿@model Facade.MatchEntryView
+
+@{
+	ViewData["Type"] = "Match Entries";
+	Layout = "~/Views/Shared/_DetailsLayout.cshtml";
+}
+
+@{
+	await Html.RenderPartialAsync("_MatchEntryView", Model);
+}

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<script>
+	// code below saves scrolling position in browser
+	window.addEventListener("beforeunload", () => {
+		sessionStorage.setItem("scrollPosition", window.scrollY);
+	});
+
+	window.addEventListener("load", () => {
+		const scrollPosition = sessionStorage.getItem("scrollPosition");
+		if (scrollPosition) {
+			window.scrollTo(0, parseInt(scrollPosition, 10));
+		}
+	});
+</script>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>CS2Hub</title>
+    <meta name="keywords" content="CS2, gaming, hub, Counter-Strike">
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/bootstrap.css")">
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/css/style.css")">
+	<link rel="stylesheet" href="@Url.Content("~/css/flag-icons.css")">
+
+</head>
+<body>
+	
+<!--header -->
+<div class="header_section">
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="logo"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src="@Url.Content("~/images/logo.png")"></a></div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="TourN" asp-action="Index">TOURNAMENTS</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">TEAMS</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="TournEntry" asp-action="Index">ENTRIES</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="Index">PLAYERS</a>
+					</li>
+					<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
+					</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Match" asp-action="Index">MATCHES</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="MatchEntry" asp-action="Index">MATCH ENTRIES</a>
+						</li>
+						<partial name="_LoginPartial" />
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+<!--header end-->
+
+<!--banner start-->
+<div class="banner_section layout_padding">
+	<div class="container">
+		<h1 class="banner_taital">CS2 Hub</h1>
+		<h2 class="free_text">
+			Here is your CS2 gaming hub
+		</h2>
+	</div>
+</div>
+<!--banner end-->
+
+<!--bg_main start-->
+<div class="container">
+	<div class="bg_main"><img src="@Url.Content("~/images/bg-main.png")"></div>
+</div>
+<!--bg_main end-->
+
+<!--about start-->
+<div class="about_section">
+	<div class="container">
+		@RenderBody()
+	</div>
+</div>
+<!--about end -->
+
+<!--service start-->
+<div class="service_section layout_padding">
+	<div class="container">
+		<h1 class="about_text">Live events</h1>
+		<p class="ipsum_text">Here you will find ongoing CS2 events, just click the tournament below</p>
+		<div class="service_section_2">
+			<div class="row" id="live-tournaments-placeholder"></div>
+		</div>
+		<script>
+    fetch('@Url.Action("RandomLiveTournamentsPartial", "TourN")')
+        .then(response => response.text())
+        .then(html => document.getElementById('live-tournaments-placeholder').innerHTML = html);
+</script>
+	</div>
+</div>
+<!--service end-->
+
+<!--footer start-->
+<div class="footer_section layout_padding">
+	<div class="container">
+        <div class="footer_main">
+			<div class="input-group mb-3">
+                <div class="input-group-append">
+                   <span class="input-group-text" id="basic-addon2">
+							<a href="mailto:support@cs2hub.com" style="text-decoration: none; color: inherit;">e-mail us</a> <!--сделать по центру-->
+                   </span>
+                </div>
+			</div>
+			<h1 class="year_text">2025</h1>
+			<h1 class="landing_text">CS2 Hub </h1>
+		</div>
+        <div class="social_icon" style="text-align: center;">
+            <ul style="display: inline-block; padding: 0; margin: 0; list-style: none;">
+					<li style="display: inline; margin: 0 10px;"><a href="https://x.com/counterstrike"><img src="@Url.Content("~/images/twitter-icon.png")"></a></li>
+					<li style="display: inline; margin: 0 10px;"><a href="https://www.youtube.com/channel/UCD-6YWTBwjRFHKBDNpbQgyQ"><img src="@Url.Content("~/images/youtub-icon.png")"></a></li>
+            </ul>
+        </div>
+	</div>
+</div>
+<!--footer end -->
+
+<!--copyright start -->
+<div class="copyright_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				&copy; 2025 - CS2Hub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+    @RenderSection("Scripts", required: false)
+</html>

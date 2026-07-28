@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Facade.EntityView
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Create</h1>
+<h4>@ViewData["Type"]</h4>
+
+<form asp-action="Create">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		        
+<dl class="row">
+	@RenderBody()
+</dl>
+
+<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-primary" /> |
+		<a asp-action="Index">Back to List</a>
+</div>
+</form>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
